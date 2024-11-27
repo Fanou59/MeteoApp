@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import useSWR from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
-
+const apiKey = "MCNK5qYn54vTRputQVjw191XaHrS2ehA";
 const useWeather = (searchValue) => {
   const [localisationKey, setLocalisationKey] = useState("");
 
@@ -12,7 +12,7 @@ const useWeather = (searchValue) => {
     isLoading: locationIsLoading,
   } = useSWR(
     searchValue
-      ? `http://dataservice.accuweather.com/locations/v1/search?apikey=MCNK5qYn54vTRputQVjw191XaHrS2ehA&q=${searchValue}&language=fr`
+      ? `http://dataservice.accuweather.com/locations/v1/search?apikey=${apiKey}&q=${searchValue}&language=fr`
       : null,
     fetcher
   );
@@ -29,7 +29,7 @@ const useWeather = (searchValue) => {
     isLoading: weatherIsLoading,
   } = useSWR(
     localisationKey
-      ? `http://dataservice.accuweather.com/currentconditions/v1/${localisationKey}?apikey=MCNK5qYn54vTRputQVjw191XaHrS2ehA&language=fr`
+      ? `http://dataservice.accuweather.com/currentconditions/v1/${localisationKey}?apikey=${apiKey}&language=fr`
       : null,
     fetcher
   );

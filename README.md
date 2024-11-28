@@ -1,8 +1,80 @@
-# React + Vite
+# METEO APP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Une application météo simple utilisant React, Tailwind CSS et l'API AccuWeather.
 
-Currently, two official plugins are available:
+## Fonctionnalités
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Recherche de la météo actuelle par ville
+- Affichage de la température actuelle, de l'icône météo, de la ville et du pays
+- Utilisation de Tailwind CSS pour le style
+- Utilisation de DaisyUI pour les composants UI
+
+## Prérequis
+
+- Node.js (version 14 ou supérieure)
+- npm (version 6 ou supérieure)
+
+## Installation
+
+1. Clonez le dépôt :
+
+   ```bash
+   git clone https://github.com/votre-utilisateur/meteo-app.git
+   cd meteo-app
+   ```
+
+2. Installez les dépendances :
+
+```
+npm install
+```
+
+3. Configurez votre clé API AccuWeather :
+
+   - Créez un fichier .env à la racine du projet.
+   - Ajoutez votre clé API AccuWeather dans le fichier .env :
+
+   ```
+    REACT_APP_ACCUWEATHER_API_KEY=your_api_key_here
+   ```
+
+## Utilisation
+
+    1. Lancez l'application en mode développement :
+
+```
+npm start
+```
+
+    2. Ouvrez votre navigateur et accédez à http://localhost:3000.
+
+## Structure du projet
+
+. src/App.jsx : Composant principal de l'application
+. src/assets/components/DisplayWeather.jsx : Composant pour afficher les informations météo
+. src/assets/components/SearchBar.jsx : Composant pour la barre de recherche
+. src/hooks/useWeather.js : Hook personnalisé pour récupérer les données météo
+. tailwind.config.js : Configuration de Tailwind CSS
+
+## Configuration de Tailwind CSS
+
+Assurez-vous que votre fichier tailwind.config.js est correctement configuré :
+
+```
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [require("daisyui")],
+};
+```
+
+## Contribution
+
+Les contributions sont les bienvenues ! Veuillez ouvrir une issue ou soumettre une pull request pour toute amélioration ou correction de bug.
+
+## Licence
+
+Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.

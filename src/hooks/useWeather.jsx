@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import useSWR from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
-const apiKey = "MCNK5qYn54vTRputQVjw191XaHrS2ehA";
 const useWeather = (searchValue) => {
   const [localisationKey, setLocalisationKey] = useState("");
 

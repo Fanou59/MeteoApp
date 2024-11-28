@@ -50,11 +50,11 @@ npm start
 
 ## Structure du projet
 
-. src/App.jsx : Composant principal de l'application
-. src/assets/components/DisplayWeather.jsx : Composant pour afficher les informations météo
-. src/assets/components/SearchBar.jsx : Composant pour la barre de recherche
-. src/hooks/useWeather.js : Hook personnalisé pour récupérer les données météo
-. tailwind.config.js : Configuration de Tailwind CSS
+- src/App.jsx : Composant principal de l'application
+- src/assets/components/DisplayWeather.jsx : Composant pour afficher les informations météo
+- src/assets/components/SearchBar.jsx : Composant pour la barre de recherche
+- src/hooks/useWeather.js : Hook personnalisé pour récupérer les données météo
+- tailwind.config.js : Configuration de Tailwind CSS
 
 ## Configuration de Tailwind CSS
 

@@ -11,9 +11,7 @@ const useWeather = (searchValue) => {
     error: locationError,
     isLoading: locationIsLoading,
   } = useSWR(
-    searchValue
-      ? `https://dataservice.accuweather.com/locations/v1/search?apikey=${apiKey}&q=${searchValue}&language=fr`
-      : null,
+    searchValue ? `/api/location?searchValue=${searchValue}` : null,
     fetcher
   );
 
@@ -28,9 +26,7 @@ const useWeather = (searchValue) => {
     error: weatherError,
     isLoading: weatherIsLoading,
   } = useSWR(
-    localisationKey
-      ? `https://dataservice.accuweather.com/currentconditions/v1/${localisationKey}?apikey=${apiKey}&language=fr`
-      : null,
+    localisationKey ? `/api/weather?locationKey=${localisationKey}` : null,
     fetcher
   );
 

@@ -40,13 +40,13 @@ npm install
 
 ## Utilisation
 
-    1. Lancez l'application en mode développement :
+1. Lancez l'application en mode développement :
 
 ```
 npm start
 ```
 
-    2. Ouvrez votre navigateur et accédez à http://localhost:3000.
+2. Ouvrez votre navigateur et accédez à http://localhost:3000.
 
 ## Structure du projet
 

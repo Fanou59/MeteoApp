@@ -34,7 +34,7 @@ npm install
    - Créez un fichier .env à la racine du projet.
    - Ajoutez votre clé API AccuWeather dans le fichier .env :
 
-   ```
+   ```bash
     REACT_APP_ACCUWEATHER_API_KEY=your_api_key_here
    ```
 
@@ -42,7 +42,7 @@ npm install
 
 1. Lancez l'application en mode développement :
 
-```
+```bash
 npm start
 ```
 
@@ -60,7 +60,7 @@ npm start
 
 Assurez-vous que votre fichier tailwind.config.js est correctement configuré :
 
-```
+```json
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],

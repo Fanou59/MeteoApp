@@ -31,7 +31,11 @@ function App() {
   const country = locationData && locationData[0]?.Country?.LocalizedName;
 
   if (weatherIsLoading || locationIsLoading)
-    return <span className="loading loading-infinity loading-lg"></span>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-infinity loading-lg"></span>
+      </div>
+    );
   if (weatherError || locationError)
     return (
       <div role="alert" className="alert alert-error">

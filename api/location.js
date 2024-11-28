@@ -1,9 +1,11 @@
 import fetch from "node-fetch";
+import dotenv from "dotenv";
+dotenv.config();
 
 export default async function handler(req, res) {
   const { searchValue } = req.query; // Récupérer la valeur recherchée
   const apiKey = process.env.ACCUWEATHER_API_KEY; // Utiliser une variable d'environnement pour la clé API
-
+  console.log("Clé API :", apiKey);
   if (!searchValue) {
     return res.status(400).json({ error: "searchValue est requis" });
   }

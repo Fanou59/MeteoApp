@@ -60,7 +60,7 @@ npm start
 
 Assurez-vous que votre fichier tailwind.config.js est correctement configuré :
 
-```json
+```bash
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],

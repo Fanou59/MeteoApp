@@ -14,6 +14,11 @@ export default async function handler(req, res) {
     const response = await fetch(
       `https://dataservice.accuweather.com/locations/v1/search?apikey=${apiKey}&q=${searchValue}&language=fr`
     );
+
+    // Ajoutez des logs pour vérifier la réponse de l'API
+    console.log("Statut de la réponse :", response.status);
+    console.log("Texte de la réponse :", await response.text());
+
     if (!response.ok) {
       return res
         .status(response.status)

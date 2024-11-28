@@ -10,6 +10,7 @@ function App() {
   const handleChange = (e) => {
     setValue(e.target.value);
   };
+
   const handleClick = () => {
     setSearchValue(value);
     setValue("");

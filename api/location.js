@@ -3,28 +3,25 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export default async function handler(req, res) {
-  console.log("Handler appelé");
-  const { searchValue } = req.query; // Récupérer la valeur recherchée
-  const apiKey = process.env.ACCUWEATHER_API_KEY; // Utiliser une variable d'environnement pour la clé API
-  console.log("Clé API :", apiKey);
+  const { searchValue } = req.query;
+  const apiKey = process.env.ACCUWEATHER_API_KEY;
+
   if (!searchValue) {
     return res.status(400).json({ error: "searchValue est requis" });
   }
 
   try {
     const response = await fetch(
-      `https://dataservice.accuweather.com/locations/v1/search?apikey=${apiKey}&q=${searchValue}&language=fr`
+      `http://dataservice.accuweather.com/locations/v1/search?apikey=${apiKey}&q=${searchValue}&language=fr`
     );
 
-    // Ajoutez des logs pour vérifier la réponse de l'API
-    console.log("Statut de la réponse :", response.status);
-    console.log("Texte de la réponse :", await response.text());
-
     if (!response.ok) {
+      const errorText = await response.text();
       return res
         .status(response.status)
-        .json({ error: "Erreur API AccuWeather" });
+        .json({ error: "Erreur API AccuWeather", details: errorText });
     }
+
     const data = await response.json();
     res.status(200).json(data);
   } catch (error) {

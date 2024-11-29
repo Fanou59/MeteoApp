@@ -7,7 +7,7 @@ export function SearchBar({ onClick, onChange }) {
       <input
         type="text"
         placeholder="Enter a city..."
-        className="input input-bordered w-full max-w-xs"
+        className="input input-bordered w-full max-w-xs text-black"
         onChange={onChange}
       />
       <div className="btn btn-circle">

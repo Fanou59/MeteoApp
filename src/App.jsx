@@ -36,7 +36,14 @@ function App() {
         <span className="loading loading-infinity loading-lg"></span>
       </div>
     );
-  if (weatherError || locationError)
+
+  if (weatherError || locationError) {
+    const errorMessage =
+      weatherError?.response?.status === 503 ||
+      locationError?.response?.status === 503
+        ? "Nombre de requêtes API dépassé"
+        : "Error ! Task failed successfully.";
+
     return (
       <div role="alert" className="alert alert-error">
         <svg
@@ -52,9 +59,10 @@ function App() {
             d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
           />
         </svg>
-        <span>Error! Task failed successfully.</span>
+        <span>{errorMessage}</span>
       </div>
     );
+  }
   return (
     <>
       <div className="flex justify-center items-center h-screen flex-col gap-2 ">

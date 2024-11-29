@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 
-const fetcher = (url) =>
-  fetch(url).then((res) => {
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    return res.json();
-  });
+const fetcher = async (url) => {
+  const res = await fetch(url);
+  if (!res.ok) {
+    const error = new Error(`HTTP error! status: ${res.status}`);
+    error.status = res.status;
+    error.response = res;
+    throw error;
+  }
+  return res.json();
+};
 
 const useWeather = (searchValue) => {
   const [localisationKey, setLocalisationKey] = useState(null);

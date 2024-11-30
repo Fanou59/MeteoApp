@@ -70,9 +70,9 @@ function App() {
   }
   return (
     <>
-      <div className="flex justify-center items-center h-screen flex-col gap-2 ">
+      <div className="flex justify-center items-center h-screen flex-col">
         <h1 className="text-black font-bold text-center">METEO APP</h1>
-        <div className="card bg-neutral text-neutral-content w-96 space-y-4 p-4">
+        <div className="card bg-neutral text-neutral-content w-96 p-4">
           <SearchBar onChange={handleChange} onClick={handleClick} />
           <DisplayWeather
             temperature={temperature}

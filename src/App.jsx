@@ -28,7 +28,7 @@ function App() {
   const temperature = weatherData && weatherData.main?.temp;
   const weatherIconCode = weatherData && weatherData.weather[0]?.icon;
   const weatherIconUrl = weatherIconCode
-    ? `http://openweathermap.org/img/wn/${weatherIconCode}.png`
+    ? `https://openweathermap.org/img/wn/${weatherIconCode}.png`
     : null;
   const city = locationData && locationData[0]?.name;
   const country = locationData && locationData[0]?.Country?.LocalizedName;

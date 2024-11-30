@@ -24,14 +24,16 @@ function App() {
     weatherError,
     weatherIsLoading,
   } = useWeather(searchValue);
-
-  const temperature = weatherData && weatherData.main?.temp;
+  const temperature =
+    weatherData && Math.ceil((weatherData.main?.temp * 10) / 10);
   const weatherIconCode = weatherData && weatherData.weather[0]?.icon;
   const weatherIconUrl = weatherIconCode
     ? `https://openweathermap.org/img/wn/${weatherIconCode}.png`
     : null;
   const city = locationData && locationData[0]?.name;
-  const country = locationData && locationData[0]?.Country?.LocalizedName;
+  const country = locationData && locationData[0]?.country;
+  const wind =
+    weatherData && Math.ceil((weatherData.wind?.speed * 3.6 * 10) / 10);
 
   if (weatherIsLoading || locationIsLoading)
     return (
@@ -77,6 +79,7 @@ function App() {
             city={city}
             country={country}
             weatherIconUrl={weatherIconUrl}
+            wind={wind}
           />
         </div>
       </div>

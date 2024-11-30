@@ -4,15 +4,20 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export default async function handler(req, res) {
-  const { locationKey } = req.query;
-  const apiKey = process.env.ACCUWEATHER_API_KEY;
-  if (!locationKey) {
-    return res.status(400).json({ error: "locationKey est requis" });
+  const { lat, lon } = req.query;
+
+  const apiKey = process.env.OPEN_WEATHER_API_KEY;
+  if (!lat || !lon) {
+    return res.status(400).json({ error: "latitude et longitude sont requis" });
   }
 
   try {
+    // const response = await fetch(
+    //   `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}&language=fr`
+    // );
+
     const response = await fetch(
-      `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}&language=fr`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=fr`
     );
 
     if (!response.ok) {

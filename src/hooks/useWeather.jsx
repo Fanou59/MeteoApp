@@ -26,8 +26,11 @@ const useWeather = (searchValue) => {
   );
 
   useEffect(() => {
-    if (locationData && locationData.length > 0) {
-      setLocalisationKey(locationData[0]?.Key);
+    if (locationData && locationData[0].lat && locationData[0].lon) {
+      setLocalisationKey({
+        lat: locationData[0].lat,
+        lon: locationData[0].lon,
+      });
     } else {
       setLocalisationKey(null);
     }
@@ -39,7 +42,9 @@ const useWeather = (searchValue) => {
     isLoading: weatherIsLoading,
     isValidating: weatherIsValidating,
   } = useSWR(
-    localisationKey ? `/api/weather?locationKey=${localisationKey}` : null,
+    localisationKey
+      ? `/api/weather?lat=${localisationKey.lat}&lon=${localisationKey.lon}`
+      : null,
     fetcher
   );
 

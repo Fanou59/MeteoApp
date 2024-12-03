@@ -34,6 +34,9 @@ const useWeather = (searchValue) => {
     } else {
       setLocalisationKey(null);
     }
+    return () => {
+      setLocalisationKey(null);
+    };
   }, [locationData]);
 
   const {

@@ -30,10 +30,11 @@ function App() {
   const weatherIconUrl = weatherIconCode
     ? `https://openweathermap.org/img/wn/${weatherIconCode}.png`
     : null;
-  const city = locationData && locationData[0]?.name;
+  const city = locationData && locationData[0]?.local_names?.fr;
   const country = locationData && locationData[0]?.country;
   const wind =
     weatherData && Math.ceil((weatherData.wind?.speed * 3.6 * 10) / 10);
+  const humidity = weatherData && weatherData.main?.humidity;
 
   if (weatherIsLoading || locationIsLoading)
     return (
@@ -71,7 +72,7 @@ function App() {
   return (
     <>
       <div className="flex justify-center items-center h-screen flex-col">
-        <h1 className="text-black font-bold text-center">METEO APP</h1>
+        <h1 className="font-bold text-center">METEO APP</h1>
         <div className="card bg-neutral text-neutral-content w-96 p-4">
           <SearchBar onChange={handleChange} onClick={handleClick} />
           <DisplayWeather
@@ -80,6 +81,7 @@ function App() {
             country={country}
             weatherIconUrl={weatherIconUrl}
             wind={wind}
+            humidity={humidity}
           />
         </div>
       </div>

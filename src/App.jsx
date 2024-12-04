@@ -36,13 +36,6 @@ function App() {
     weatherData && Math.ceil((weatherData.wind?.speed * 3.6 * 10) / 10);
   const humidity = weatherData && weatherData.main?.humidity;
 
-  if (weatherIsLoading || locationIsLoading)
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <span className="loading loading-infinity loading-lg"></span>
-      </div>
-    );
-
   if (weatherError || locationError) {
     const errorMessage =
       weatherError?.response?.status === 503 ||
@@ -72,7 +65,12 @@ function App() {
   return (
     <>
       <div className="flex justify-center items-center h-screen flex-col">
-        <h1 className="font-bold text-center">METEO APP</h1>
+        <div className="flex items-center gap-4">
+          <h1 className="font-bold text-center">METEO APP</h1>
+          {(weatherIsLoading || locationIsLoading) && (
+            <span className="loading loading-infinity loading-lg"></span>
+          )}
+        </div>
         <div className="card bg-neutral text-neutral-content w-96 p-4">
           <SearchBar onChange={handleChange} onClick={handleClick} />
           <DisplayWeather

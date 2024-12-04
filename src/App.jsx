@@ -2,6 +2,14 @@ import { useState } from "react";
 import { DisplayWeather } from "./assets/components/DisplayWeather";
 import { SearchBar } from "./assets/components/SearchBar";
 import useWeather from "./hooks/useWeather";
+import {
+  getTemperature,
+  getWeatherIconUrl,
+  getCity,
+  getHumidity,
+  getCountry,
+  getWindSpeed,
+} from "./utils";
 
 function App() {
   const [value, setValue] = useState("");
@@ -24,17 +32,13 @@ function App() {
     weatherError,
     weatherIsLoading,
   } = useWeather(searchValue);
-  const temperature =
-    weatherData && Math.ceil((weatherData.main?.temp * 10) / 10);
-  const weatherIconCode = weatherData && weatherData.weather[0]?.icon;
-  const weatherIconUrl = weatherIconCode
-    ? `https://openweathermap.org/img/wn/${weatherIconCode}.png`
-    : null;
-  const city = locationData && locationData[0]?.local_names?.fr;
-  const country = locationData && locationData[0]?.country;
-  const wind =
-    weatherData && Math.ceil((weatherData.wind?.speed * 3.6 * 10) / 10);
-  const humidity = weatherData && weatherData.main?.humidity;
+
+  const temperature = getTemperature(weatherData);
+  const weatherIconUrl = getWeatherIconUrl(weatherData);
+  const city = getCity(locationData);
+  const country = getCountry(locationData);
+  const wind = getWindSpeed(weatherData);
+  const humidity = getHumidity(weatherData);
 
   if (weatherError || locationError) {
     const errorMessage =

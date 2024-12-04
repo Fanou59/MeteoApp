@@ -72,7 +72,11 @@ function App() {
           )}
         </div>
         <div className="card bg-neutral text-neutral-content w-96 p-4">
-          <SearchBar onChange={handleChange} onClick={handleClick} />
+          <SearchBar
+            value={value}
+            onChange={handleChange}
+            onClick={handleClick}
+          />
           <DisplayWeather
             temperature={temperature}
             city={city}

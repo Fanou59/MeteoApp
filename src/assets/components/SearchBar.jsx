@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Search } from "lucide-react";
 
-export function SearchBar({ onClick, onChange }) {
+export function SearchBar({ onClick, onChange, value }) {
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       onClick();
@@ -15,6 +15,7 @@ export function SearchBar({ onClick, onChange }) {
         className="input input-bordered w-full max-w-xs"
         onChange={onChange}
         onKeyUp={handleKeyPress}
+        value={value}
       />
       <div className="btn btn-circle">
         <Search onClick={onClick} />
